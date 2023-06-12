@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
@@ -103,7 +104,7 @@ public class BackupActivity extends AppCompatActivity {
                 Context context = getApplicationContext();
 
                 //Comprobacion de la API
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     fileSource = new File(context.getDatabasePath("secretKey.db").getPath());
                     fileDestination = new File(storageVolume.getDirectory().getPath() + "/Download/secretKey.db");
 
