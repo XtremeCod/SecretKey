@@ -41,7 +41,7 @@ public class SaveActivity extends AppCompatActivity implements AdapterView.OnIte
     private ImageView btnclose;
     private TextView popup;
     private String redes_sociales, compras, educacion, email1, bancos, otros;
-    DbHelper dbhelper;
+    private DbHelper dbhelper;
 
 
     @Override
@@ -81,6 +81,7 @@ public class SaveActivity extends AppCompatActivity implements AdapterView.OnIte
             last_login = extras.getString("last_login");
         }
 
+        //Si el usuario eligio la contraseña generada se muestra ya introducida
         if (selected_password.length() > 0) {
             password.setText(selected_password);
         }
@@ -218,6 +219,7 @@ public class SaveActivity extends AppCompatActivity implements AdapterView.OnIte
         selected = item.getSpinnerItemName();
     }
 
+
     /**
      * Metodo de las acciones a realizar en los item no seleccionados
      *
@@ -226,6 +228,7 @@ public class SaveActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
     }
+
 
     /**
      * Metodo que gestiona la accion si se presiona el boton de volver
@@ -239,6 +242,7 @@ public class SaveActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("last_login", last_login);
         SaveActivity.this.startActivity(intent);
     }
+
 
     /**
      * Metodo que gestiona la accion si la aplicacion queda en segundo plano

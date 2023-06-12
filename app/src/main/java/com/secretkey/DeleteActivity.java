@@ -26,14 +26,21 @@ import java.util.Arrays;
 
 public class DeleteActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String id_usuario, key, selected, last_login;
-    ArrayList<CustomItem> customList;
-    DbHelper dbhelper;
-    Spinner spinner;
-    Button execute;
-    ImageView btnclose;
-    TextView popup;
+    private String id_usuario, key, selected, last_login;
+    private ArrayList<CustomItem> customList;
+    private DbHelper dbhelper;
+    private Spinner spinner;
+    private Button execute;
+    private ImageView btnclose;
+    private TextView popup;
 
+    /**
+     * Metodo que se ejecuta al crear la actividad
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

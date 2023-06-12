@@ -37,13 +37,13 @@ import javax.crypto.NoSuchPaddingException;
 
 public class SearchActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String id_usuario, key, selected, last_login;
+    private String id_usuario, key, selected, last_login;
 
-    ArrayList<CustomItem> customList;
-    DbHelper dbhelper;
-    Spinner spinner;
-    TextView email,password,popup,fecha;
-    ImageView btnclose;
+    private ArrayList<CustomItem> customList;
+    private DbHelper dbhelper;
+    private Spinner spinner;
+    private TextView email,password,popup,fecha;
+    private ImageView btnclose;
     private CountDownTimer countDownTimer;
     private static final long COUNTDOWN_DURATION = 2 * 60 * 1000;
 
@@ -61,7 +61,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
 
         dbhelper = new DbHelper(SearchActivity.this);
 
-        //Obtenemos los datos de la vista anterior
+        //Obtenemos los datos del contexto anterior
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id_usuario = extras.getString("id");
@@ -69,6 +69,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
             last_login = extras.getString("last_login");
         }
 
+        //Identificacion de componentes
         spinner = findViewById(R.id.searchType);
         email = (TextView) findViewById(R.id.searchEmail);
         password = (TextView) findViewById(R.id.searchPassword);
@@ -102,6 +103,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
+        //Funciona al presionar en copiar al portapapeles
         password.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -116,13 +118,17 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
                         ClipData clip = ClipData.newPlainText("Password generado", password.getText().toString());
                         clipboard.setPrimaryClip(clip);
 
+                        //Texto a mostrar en el popup
                         popup.setText(getText(R.string.SEARCHpopup));
 
+                        //Mostramos popup
                         popupWindow.showAtLocation(password, Gravity.CENTER, 0, 0);
                         popupWindow.setOutsideTouchable(true);
                         popupWindow.setFocusable(true);
                         popupWindow.setTouchable(true);
                         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                        //Insertamos log
                         dbhelper.insertLog(id_usuario,getText(R.string.SEARCHlog1).toString());
                         return true;
                     }

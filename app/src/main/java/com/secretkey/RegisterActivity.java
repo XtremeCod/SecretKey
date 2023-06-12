@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         DbHelper dbhelper = new DbHelper(RegisterActivity.this);
 
-        //Casting de componentes
+        //Identificacion de componentes
         button_register = findViewById(R.id.registerCreate);
         usuario = findViewById(R.id.registerUser);
         password = findViewById(R.id.registerPassword);
@@ -117,10 +117,12 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
 
                             } else {
+                                //Puede ocurrir que el usuario ya exista
                                 Toast.makeText(RegisterActivity.this, getText(R.string.REGISTERlogusuarioexiste), Toast.LENGTH_SHORT).show();
                             }
                         } else {
 
+                            //Mostramos popup si la contraseña no cumple los requisitos
                             popupWindow.showAtLocation(button_register, Gravity.CENTER, 0, 0);
                             popupWindow.setOutsideTouchable(true);
                             popupWindow.setFocusable(true);
@@ -128,10 +130,12 @@ public class RegisterActivity extends AppCompatActivity {
                             popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         }
                     } else {
+                        //Puede ocurrir que la contraseña y su confirmacion no coincidan
                         Toast.makeText(RegisterActivity.this, getText(R.string.REGISTERlogcontrasenianocoincide), Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
+                    //Si el formato del usario no es el adecuado se mostrara un error
                     Toast.makeText(RegisterActivity.this, getText(R.string.REGISTERlognousuario), Toast.LENGTH_SHORT).show();
                 }
 

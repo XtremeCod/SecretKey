@@ -67,7 +67,7 @@ public class ModifyActivity extends AppCompatActivity implements AdapterView.OnI
             last_login = extras.getString("last_login");
         }
 
-
+        //Identificacion de componentes
         spinner = findViewById(R.id.modifyType);
         customList = getCustomList();
         CustomAdapter adapter = new CustomAdapter(this, customList);
@@ -181,12 +181,14 @@ public class ModifyActivity extends AppCompatActivity implements AdapterView.OnI
         CustomItem item = (CustomItem) adapterView.getSelectedItem();
         selected = item.getSpinnerItemName();
 
+        //Obtenemos los datos seleccionados
         try {
             String[] datos = dbhelper.selectedService(id_usuario, selected);
 
             email = findViewById(R.id.modifyEmail);
             password = findViewById(R.id.modifyPassword);
 
+            //Mostramos los datos
             email.setText(Cifrador.descifrar(key, datos[0]));
             password.setText(Cifrador.descifrar(key, datos[1]));
 

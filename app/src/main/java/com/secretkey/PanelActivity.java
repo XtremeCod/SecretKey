@@ -33,7 +33,7 @@ public class PanelActivity extends AppCompatActivity {
 
         DbHelper dbhelper = new DbHelper(PanelActivity.this);
 
-        //Obtenemos datos pasados por contexto
+        //Obtenemos datos del contaxto anterior
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id_usuario = extras.getString("id");

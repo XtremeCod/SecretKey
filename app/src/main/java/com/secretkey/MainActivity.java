@@ -146,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Funcion de la imagen info
         infobtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

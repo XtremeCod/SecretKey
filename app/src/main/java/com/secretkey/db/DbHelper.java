@@ -24,10 +24,10 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "secretKey.db";
-    public static final String TABLE_USERS = "users";
-    public static final String TABLE_SERVICES = "services";
-    public static final String TABLE_TYPES = "types";
-    public static final String TABLE_LOGS = "logs";
+    private static final String TABLE_USERS = "users";
+    private static final String TABLE_SERVICES = "services";
+    private static final String TABLE_TYPES = "types";
+    private static final String TABLE_LOGS = "logs";
     private String redes_sociales,compras,educacion,email,bancos,otros,media,alta,baja;
 
     public DbHelper(@Nullable Context context) {

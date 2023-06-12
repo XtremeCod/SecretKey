@@ -47,7 +47,7 @@ public class GenerateActivity extends AppCompatActivity {
 
         DbHelper dbhelper = new DbHelper(GenerateActivity.this);
 
-        //Obtenemos datos de actividad anterior
+        //Obtenemos contexto de actividad anterior
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id_usuario = extras.getString("id");
@@ -55,7 +55,7 @@ public class GenerateActivity extends AppCompatActivity {
             last_login = extras.getString("last_login");
         }
 
-        //Hacemos casting de los elementos
+        //Identificacion de los elementos
         password = findViewById(R.id.generatePassword);
         password.setText(SecurePassword.generarPassword());
         usar = findViewById(R.id.generateUse);
@@ -122,13 +122,17 @@ public class GenerateActivity extends AppCompatActivity {
                         ClipData clip = ClipData.newPlainText("Password generado", password.getText().toString());
                         clipboard.setPrimaryClip(clip);
 
+                        //Establecemos texto a mostrar
                         popup.setText(getText(R.string.GENERATEpopupexito));
 
+                        //Mostramos popup
                         popupWindow.showAtLocation(password, Gravity.CENTER, 0, 0);
                         popupWindow.setOutsideTouchable(true);
                         popupWindow.setFocusable(true);
                         popupWindow.setTouchable(true);
                         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                        //Insertamos log
                         dbhelper.insertLog(id_usuario,getText(R.string.GENERATElog).toString());
                         return true;
                     }
@@ -157,7 +161,7 @@ public class GenerateActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        //El contador esta fijado en 1 minutos, si transcurren ejecutan finish()
+        //El contador esta fijado en 2 minutos, si transcurren ejecutan finish()
         startCountdownTimer();
 
     }
